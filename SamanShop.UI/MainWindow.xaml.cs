@@ -48,6 +48,8 @@ namespace SamanShop.UI
 
             var payment = new Payment();
 
+            payment.Add(12, 13, (a, b) => { return a + b; });
+               
             if (item!=null)
             {
              var  obj=   payment.payMentWay.TryGetValue(item, out Payment val);
