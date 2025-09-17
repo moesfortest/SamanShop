@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SamanShop.UI"
         mc:Ignorable="d"
-        Title="صدور فاکتور" Height="250" Width="400"
+        Title="صدور فاکتور" Height="345" Width="552"
         WindowStartupLocation="CenterScreen">
 
     <Grid Margin="20">
@@ -38,9 +38,9 @@
         <!-- Customer Number -->
         <Label Grid.Row="1" Grid.Column="0"
                Content="شماره مشتری:"
-               VerticalAlignment="Center"
-               HorizontalAlignment="Right"
-               Margin="5"/>
+               VerticalAlignment="Bottom"
+               HorizontalAlignment="Left"
+               Margin="35,0,0,55" Grid.RowSpan="2"/>
         <TextBox Grid.Row="1" Grid.Column="1"
                  x:Name="customerNumbertxt"
                  Width="150"
@@ -60,5 +60,7 @@
                 FontWeight="Bold"
                 BorderThickness="0"
                 Cursor="Hand" Click="btnSave_Click"/>
+        <ComboBox Grid.Column="1" HorizontalAlignment="Center" Name="paymentlst" Margin="0,51,0,0" Grid.Row="3" VerticalAlignment="Top" Width="120" SelectionChanged="paymentlst_SelectionChanged"/>
+
     </Grid>
 </Window>

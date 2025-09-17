@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using SamanShop.Bussiness.Models.Banks;
+using SamanShop.Bussiness.Models.Payments;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -14,26 +16,48 @@ namespace SamanShop.UI
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow
     {
         public MainWindow()
         {
             InitializeComponent();
+
+            List<string> paymentWays = new List<string>();
+            paymentWays.Add("CardToCard");
+            paymentWays.Add("ArzeDigital");
+            paymentWays.Add("Paypal");
+            paymentlst.ItemsSource = paymentWays;
+
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            var invoiceNumber = invoiceNumbertxt.Text;
-            var customerNumbner = customerNumbertxt.Text;
-            //ui
-            ///collect data
-            ///
-            ///input validation
-            ///
-            /// bussiness
-            ///validation bussiness
-            ///database
-            ///database
+
+
+
+
+        }
+
+
+        private void paymentlst_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+           
+            var  item = paymentlst.SelectedItem as string;
+
+
+            var payment = new Payment();
+
+            if (item!=null)
+            {
+             var  obj=   payment.payMentWay.TryGetValue(item, out Payment val);
+
+                val.Pay(12);
+            }
+
+ 
+
+
 
 
         }
