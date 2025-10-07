@@ -9,7 +9,7 @@ namespace SmanaShop.DAL.Model
     public  class Product
     {
 
-        public   Guid  ProductID { get; set; }
+        public   int  ProductID { get; set; }
 
         public    string ProductName  { get; set; }
 

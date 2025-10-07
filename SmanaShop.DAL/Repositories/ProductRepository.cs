@@ -14,9 +14,8 @@ namespace SmanaShop.DAL.Repositories
         public bool AddProduct(Product product)
         {
 
-            product.ProductID = Guid.NewGuid();
             _context.Products.Add(product);
-            SaveChange();
+    
             return true;
         }
 
@@ -30,7 +29,7 @@ namespace SmanaShop.DAL.Repositories
             {
                 _context.Products.Remove(c);
             });
-            SaveChange();
+        
 
         }
 
@@ -59,7 +58,7 @@ namespace SmanaShop.DAL.Repositories
         public bool UpdateProduct(Product product)
         {
             _context.Update(product);
-            SaveChange();
+        
             return true;
         }
 

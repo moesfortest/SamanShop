@@ -12,5 +12,9 @@ namespace SamanShop.Bussiness
 
         public void DeleteProduct(int productCode);
 
+        public void SaveChange();
+
+        { _context.SaveChanges(); }
+
     }
 }

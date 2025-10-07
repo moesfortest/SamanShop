@@ -1,15 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SamanShop.Bussiness.Models
+﻿namespace SamanShop.Bussiness.Models
 {
     public class InvoiceDetail
     {
 
+        public Guid InvoiceDetailID { get; set; }
+
+        public decimal InavoiveDetailPrice { get; set; }
+
+        public long ProductQuntity { get; set; }
 
 
+        ///navigation property
+        ///
+        public long InvoiceNumber
+        {
+            get; set;
+
+        }
+
+
+        public Invoice Invoice {  get; set; }
     }
 }

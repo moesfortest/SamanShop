@@ -1,13 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SmanaShop.DAL.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace SmanaShop.DAL
+namespace SmanaShop.DAL.Configorations
 {
     public class ProductConfigoration : IEntityTypeConfiguration<Product>
     {
@@ -17,7 +12,6 @@ namespace SmanaShop.DAL
 
             builder.HasKey(g => g.ProductID);
 
-            builder.Property(g => g.ProductID).ValueGeneratedNever();   
 
             builder.Property(c => c.ProductName).HasMaxLength(50);
 

@@ -20,12 +20,14 @@ namespace SamanShop.Bussiness.Services
             product.ProductName = productdto.ProductName;
             product.ProductPrice=productdto.ProductPrice;
             _repository.AddProduct(product);
+            _repository.SaveChange();
             return true;
         }
 
         public void DeleteProduct(int productCode)
         {
   _repository.DeleteProduct(productCode);
+            _repository.SaveChange();
         }
 
         public List<ProductDTO> GetAll()

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SmanaShop.DAL.Configorations;
 using SmanaShop.DAL.Model;
 
 namespace SmanaShop.DAL
@@ -15,6 +16,8 @@ namespace SmanaShop.DAL
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfiguration(new InvoiceDetilConfigoration());
+            modelBuilder.ApplyConfiguration(new InvoiceConfigoration());
             modelBuilder.ApplyConfiguration(new ProductConfigoration());
             base.OnModelCreating(modelBuilder);
         }

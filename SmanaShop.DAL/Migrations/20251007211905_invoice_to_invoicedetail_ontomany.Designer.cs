@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SmanaShop.DAL;
 
@@ -11,9 +12,10 @@ using SmanaShop.DAL;
 namespace SmanaShop.DAL.Migrations
 {
     [DbContext(typeof(SamanDbContext))]
-    partial class SamanDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251007211905_invoice_to_invoicedetail_ontomany")]
+    partial class invoice_to_invoicedetail_ontomany
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

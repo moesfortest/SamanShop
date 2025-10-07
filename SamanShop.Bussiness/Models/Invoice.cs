@@ -11,8 +11,10 @@ namespace SamanShop.Bussiness.Models
         public long InvoiceNumber { get; set; }
         public DateTime InvoiceDate { set; get; }
         public decimal WholePrice { get; set; }
-        public long CustomerNationalCode { get; set; }
+       // public long CustomerNationalCode { get; set; }
 
+
+        //navigaion-property
         public List<InvoiceDetail> InvoiceDetails { get; set; }
     }
 }
