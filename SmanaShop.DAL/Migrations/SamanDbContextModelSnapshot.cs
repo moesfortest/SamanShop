@@ -22,13 +22,41 @@ namespace SmanaShop.DAL.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("SamanShop.Bussiness.Models.Customer", b =>
+                {
+                    b.Property<long>("NationalCode")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<long>("InvoiceNumber")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<long?>("PhoneNumber")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("NationalCode");
+
+                    b.ToTable("Customer", (string)null);
+                });
+
             modelBuilder.Entity("SamanShop.Bussiness.Models.Invoice", b =>
                 {
                     b.Property<long>("InvoiceNumber")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("InvoiceNumber"), 1L, 1);
 
                     b.Property<DateTime>("InvoiceDate")
                         .HasColumnType("datetime2");
@@ -86,6 +114,17 @@ namespace SmanaShop.DAL.Migrations
                     b.ToTable("Product", (string)null);
                 });
 
+            modelBuilder.Entity("SamanShop.Bussiness.Models.Invoice", b =>
+                {
+                    b.HasOne("SamanShop.Bussiness.Models.Customer", "Customer")
+                        .WithOne("Invoice")
+                        .HasForeignKey("SamanShop.Bussiness.Models.Invoice", "InvoiceNumber")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
+                });
+
             modelBuilder.Entity("SamanShop.Bussiness.Models.InvoiceDetail", b =>
                 {
                     b.HasOne("SamanShop.Bussiness.Models.Invoice", "Invoice")
@@ -95,6 +134,12 @@ namespace SmanaShop.DAL.Migrations
                         .IsRequired();
 
                     b.Navigation("Invoice");
+                });
+
+            modelBuilder.Entity("SamanShop.Bussiness.Models.Customer", b =>
+                {
+                    b.Navigation("Invoice")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("SamanShop.Bussiness.Models.Invoice", b =>

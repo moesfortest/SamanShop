@@ -16,5 +16,8 @@ namespace SamanShop.Bussiness.Models
 
         //navigaion-property
         public List<InvoiceDetail> InvoiceDetails { get; set; }
+
+
+        public  Customer Customer { get; set; }
     }
 }

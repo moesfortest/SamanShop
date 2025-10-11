@@ -8,63 +8,48 @@
         Title="صدور فاکتور" Height="638" Width="1156"
         WindowStartupLocation="CenterScreen">
 
-    <Grid Margin="20">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <!-- Invoice Number -->
-            <RowDefinition Height="Auto"/>
-            <!-- Customer Number -->
-            <RowDefinition Height="Auto"/>
-            <!-- Save Button -->
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+    <Grid >
+        <DockPanel>
+            <!-- Main Menu -->
+            <Menu DockPanel.Dock="Top" FlowDirection="RightToLeft"  Background="#f8f8f8" FontSize="16" FontWeight="Bold">
+                <Menu.ItemContainerStyle>
+                    <Style TargetType="MenuItem">
+                        <Setter Property="Margin" Value="25,0"/>
+                        <!-- Space between menu items -->
+                        <Setter Property="Padding" Value="10,5"/>
+                    </Style>
+                </Menu.ItemContainerStyle>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="120"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+                <!-- فاکتور -->
+                <MenuItem Header="فاکتور" Cursor="Hand">
+                    <MenuItem Header="فاکتور جدید" Click="InvoiceCreate_Click"/>
+                    <MenuItem Header="لیست فاکتورها"/>
+                    <MenuItem Header="چاپ فاکتور"/>
+                </MenuItem>
 
-        <!-- Invoice Number -->
-        <Label Grid.Row="0" Grid.Column="0"
-               Content="شماره فاکتور:"
-               VerticalAlignment="Center"
-               HorizontalAlignment="Right"
-               Margin="5"/>
-        <TextBox Grid.Row="0" Grid.Column="1"
-                 x:Name="invoiceNumbertxt"
-                 Width="150"
-                 Margin="5"/>
+                <!-- مشتری -->
+                <MenuItem Header="مشتری">
+                    <MenuItem Header="مشتری جدید"/>
+                    <MenuItem Header="لیست مشتریان"/>
+                    <MenuItem Header="ویرایش اطلاعات"/>
+                </MenuItem>
 
-        <!-- Customer Number -->
-        <Label Grid.Row="1" Grid.Column="0"
-               Content="شماره مشتری:"
-               VerticalAlignment="Bottom"
-               HorizontalAlignment="Left"
-               Margin="35,0,0,55" Grid.RowSpan="2"/>
-        <TextBox Grid.Row="1" Grid.Column="1"
-                 x:Name="customerNumbertxt"
-                 Width="150"
-                 Margin="5"/>
+                <!-- پرداخت -->
+                <MenuItem Header="پرداخت">
+                    <MenuItem Header="ثبت پرداخت"/>
+                    <MenuItem Header="گزارش پرداخت‌ها"/>
+                </MenuItem>
 
-        <!-- Save Button -->
-        <Button Grid.Row="2" Grid.ColumnSpan="2"
-                Content="💾 ذخیره فاکتور"
-                x:Name="btnSave"
-                Width="150"
-                Height="35"
-                Margin="10"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Background="#4CAF50"
-                Foreground="White"
-                FontWeight="Bold"
-                BorderThickness="0"
-                Cursor="Hand" Click="btnSave_Click"/>
-        <ComboBox Grid.Column="1" HorizontalAlignment="Center" Name="paymentlst" Margin="0,51,0,0" Grid.Row="3" VerticalAlignment="Top" Width="120" SelectionChanged="paymentlst_SelectionChanged"/>
-        <DataGrid x:Name="ProductsGrid"
-                  AutoGenerateColumns="True"
-                  IsReadOnly="True"
-                  Margin="87,10,571,258" Grid.ColumnSpan="2" Grid.Row="3"/>
+                <!-- بانک -->
+                <MenuItem Header="بانک">
+                    <MenuItem Header="حساب جدید"/>
+                    <MenuItem Header="لیست حساب‌ها"/>
+                    <MenuItem Header="انتقال وجه"/>
+                </MenuItem>
+            </Menu>
+
+
+        </DockPanel>
 
     </Grid>
 </Window>

@@ -14,7 +14,7 @@ namespace SamanShop.Bussiness
 
         public void SaveChange();
 
-        { _context.SaveChanges(); }
+      
 
     }
 }

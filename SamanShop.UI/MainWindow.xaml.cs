@@ -1,5 +1,6 @@
 ﻿using SamanShop.Bussiness.Models.Payments;
 using SamanShop.Bussiness_.Contract;
+using SamanShop.UI.Forms.Invoicefrm;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -22,54 +23,12 @@ namespace SamanShop.UI
             this.DataContext = viewModel;
 
         }
-        
 
-        private void btnSave_Click(object sender, RoutedEventArgs e)
+        private void InvoiceCreate_Click(object sender, RoutedEventArgs e)
         {
 
-            var dto = new ProductDTO();
-            dto.ProductName = "car23";
-            dto.ProductPrice = 1212;
-         
-
-            var  id=Guid.NewGuid();
-
-            var productservice = ((MainViewModel)DataContext).ProductService;
-            ((MainViewModel)DataContext).ProductService.CreateProduct(dto);
-
-
-            var result = productservice.GetAll();
-            ProductsGrid.ItemsSource = result;
-
-
-            productservice.DeleteProduct(90);
-
-        }
-
-
-        private void paymentlst_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-           
-            var  item = paymentlst.SelectedItem as string;
-
-
-            var payment = new Payment();
-
-            payment.Add(12, 13, (a, b) => { return a + b; });
-               
-            if (item!=null)
-            {
-             var  obj=   payment.payMentWay.TryGetValue(item, out Payment val);
-
-                val.Pay(12);
-            }
-
- 
-
-
-
-
+            var invoicefrm = new Invoicefrm((MainViewModel)this.DataContext);
+            invoicefrm.Show();
         }
     }
 }

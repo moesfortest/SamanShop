@@ -16,6 +16,7 @@ namespace SmanaShop.DAL
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfiguration(new CustomerConfiguration());
             modelBuilder.ApplyConfiguration(new InvoiceDetilConfigoration());
             modelBuilder.ApplyConfiguration(new InvoiceConfigoration());
             modelBuilder.ApplyConfiguration(new ProductConfigoration());

@@ -11,7 +11,7 @@ namespace SmanaShop.DAL.Configorations
             builder.ToTable("Invoice");
 
             builder.HasKey(g => g.InvoiceNumber);
-
+            builder.Property(g => g.InvoiceNumber).ValueGeneratedNever();
             builder.Property(c => c.InvoiceDate);
             builder.Property(c => c.WholePrice);
 
@@ -20,6 +20,11 @@ namespace SmanaShop.DAL.Configorations
                 WithOne(inv => inv.Invoice).
                 HasForeignKey(inv => inv.InvoiceNumber).
                 OnDelete(DeleteBehavior.Cascade);
+
+
+            builder.HasOne(t => t.Customer).
+                WithOne(t => t.Invoice).
+                HasForeignKey<Invoice>(t => t.InvoiceNumber);
 
         }
    

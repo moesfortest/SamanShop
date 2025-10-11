@@ -5,22 +5,43 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SmanaShop.DAL.Migrations
 {
-    public partial class invoice_to_invoicedetail_ontomany : Migration
+    public partial class setup_configoration_invoiceinvoicedetailcustomer_afterrevert : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Customer",
+                columns: table => new
+                {
+                    NationalCode = table.Column<long>(type: "bigint", nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    PhoneNumber = table.Column<long>(type: "bigint", nullable: true),
+                    InvoiceNumber = table.Column<long>(type: "bigint", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Customer", x => x.NationalCode);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Invoice",
                 columns: table => new
                 {
-                    InvoiceNumber = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    InvoiceNumber = table.Column<long>(type: "bigint", nullable: false),
                     InvoiceDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     WholePrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Invoice", x => x.InvoiceNumber);
+                    table.ForeignKey(
+                        name: "FK_Invoice_Customer_InvoiceNumber",
+                        column: x => x.InvoiceNumber,
+                        principalTable: "Customer",
+                        principalColumn: "NationalCode",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -56,6 +77,9 @@ namespace SmanaShop.DAL.Migrations
 
             migrationBuilder.DropTable(
                 name: "Invoice");
+
+            migrationBuilder.DropTable(
+                name: "Customer");
         }
     }
 }

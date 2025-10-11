@@ -1,0 +1,52 @@
+﻿<Window x:Class="SamanShop.UI.Forms.Invoicefrm.Invoicefrm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SamanShop.UI.Forms.Invoicefrm"
+        mc:Ignorable="d"
+        Title="Invoicefrm" ResizeMode="NoResize" Height="489" Width="1268" WindowStartupLocation="CenterScreen">
+    <Grid Margin="0,0,78,0">
+
+
+        <StackPanel Margin="0,0,46,143">
+            <DataGrid x:Name="DataGrid"  CanUserAddRows="False" AutoGenerateColumns="False" Width="1232" Height="335">
+
+                <DataGrid.Columns>
+
+
+
+
+                    <DataGridTextColumn   Width="150"  Header="نام" Binding="{Binding FirstName}" />
+
+
+                    <!-- Second Column with Custom Header -->
+                    <DataGridTextColumn   Width="170" Header="نام خانوادگی" Binding="{Binding LastName}" />
+
+                    <!-- Second Column with Custom Header -->
+                    <DataGridTextColumn  Width="80" Header="کد ملی" Binding="{Binding NationalCode}" />
+
+                    <DataGridTextColumn   Width="250" Header="تلفن" Binding="{Binding PhoneNumber}" />
+
+                </DataGrid.Columns>
+            </DataGrid>
+
+        </StackPanel>
+
+
+        <!--left top r b-->
+        <StackPanel  Orientation="Horizontal" Height="50" HorizontalAlignment="Left" 
+    Margin="335,400,0,23" Width="300" >
+
+
+
+            <Button Name="FirstPageButton" Content="&lt;&lt;" Width="40" Margin="5" Click="FirstPage_Click"/>
+            <Button Name="PreviousPageButton" Content="&lt;" Width="40" Margin="5" Click="PreviousPage_Click"/>
+            <TextBlock Name="PageInfo" VerticalAlignment="Center" Margin="10" Text="Page 1 of 10"/>
+            <Button Name="NextPageButton" Content="&gt;" Width="40" Margin="5" Click="NextPage_Click"/>
+            <Button Name="LastPageButton" Content="&gt;&gt;" Width="40" Margin="5" Click="LastPage_Click"/>
+        </StackPanel>
+
+
+    </Grid>
+</Window>
